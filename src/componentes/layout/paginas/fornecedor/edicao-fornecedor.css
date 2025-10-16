@@ -1,0 +1,30 @@
+.conteudo-pagina-edicao-fornec{
+    display: flex;
+}
+
+.conteudo-edicao-fornec{
+    background-color: var(--corSecundaria);
+    width: 100vw;
+}
+
+.dados-fornec{
+    background-color: var(--corBranco);
+    margin: 2vw;
+    padding-left: 25px;
+    padding-bottom: 30px;
+    margin-top: -2vw;
+}
+
+.dados-edicao-fornec-nome {
+    padding-top: 30px;
+}
+
+.dados-edicao-fornec-nome input,
+.dados-edicao-fornec-email input,
+.dados-edicao-fornec-telefone input,
+.dados-edicao-fornec-endereco input,
+.dados-edicao-fornec-salario input
+{
+    margin-left: 10px;
+    width: 200px;
+}

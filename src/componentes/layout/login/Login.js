@@ -1,0 +1,31 @@
+import React, { Fragment } from 'react'
+import './login.css'
+import ImagemPata from '../../imagens/logo-removebg-preview.png'
+import Cadastro from '../cadastro-funcionario/Cadastro'
+
+const Login = () => {
+  return (
+    <Fragment>
+       <div className='fundo-login'>
+            <div className='conteudo-login'>
+                <img src={ImagemPata} className='imagem-login'/>
+                <h1 className='nome-pagina-login'>Login</h1>
+
+                <div className='dados-login'>
+                <input placeholder='E-mail'></input>
+                <input placeholder='Senha' type='password'></input>
+                </div>
+
+                <div className='botoes-login'>
+                <button>Entrar</button>
+                <p>Não tem conta? <a href='/cadastro'>Cadastre-se</a></p>
+                
+                </div>
+            </div>
+        </div> 
+    </Fragment>
+  
+  )
+}
+
+export default Login

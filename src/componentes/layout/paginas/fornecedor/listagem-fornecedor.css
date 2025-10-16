@@ -1,0 +1,9 @@
+.conteudo-pagina-listagem-fornec{
+    display: flex;
+}
+
+.conteudo-listagem-fornec{
+    background-color: var(--corSecundaria);
+    width: 100vw;
+}  
+
