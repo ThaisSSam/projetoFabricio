@@ -1,8 +1,0 @@
-.conteudo-pagina-listagem-pet{
-    display: flex;
-}
-
-.conteudo-listagem-pet{
-    background-color: var(--corSecundaria);
-    width: 100vw;
-}  
