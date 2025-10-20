@@ -19,7 +19,7 @@ const ItensMenuLateralDados = [
     },
     {
         page:'Produtos',
-        icon: <FaIcon.FaBone/>,
+        icon: <FaIcon.FaBox/>,
         path:'/produtos',
     },
     {

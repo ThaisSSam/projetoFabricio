@@ -15,6 +15,7 @@ import CadastroCliente from '../componentes/layout/paginas/cliente/CadastroClien
 import CadastroFuncionario from '../componentes/layout/paginas/funcionario/CadastroFuncionario';
 import EdicaoFornecedor from '../componentes/layout/paginas/fornecedor/EdicaoFornecedor';
 import CadastroFornecedor from '../componentes/layout/paginas/fornecedor/CadastroFornecedor';
+import CadastroProduto from '../componentes/layout/paginas/produto/CadastroProduto';
 
 
 
@@ -37,6 +38,7 @@ const Rotas = () => {
            <Route element = {<CadastroFornecedor/>}     path="/fornecedores/cadastro" exact />
            <Route element = {<ListagemPedido/>}      path= "/pedidos" exact />
            <Route element = {<CadastroFuncionario/>}   path="/funcionarios/cadastro" exact />
+          <Route element = {<CadastroProduto/>}     path= "/produtos/cadastro" exact />
         </Routes>
         
     </BrowserRouter>

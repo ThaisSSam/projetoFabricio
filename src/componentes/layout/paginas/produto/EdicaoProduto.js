@@ -15,16 +15,16 @@ const EdicaoProduto = () => {
   }
   return (
     <Fragment>
-          <div className='fundo-edicao-cli'>
+          <div className='fundo-edicao-prod'>
             <Header clicarBotao={clicarBotao}/>
-            <div className='conteudo-pagina-edicao-cli'>
+            <div className='conteudo-pagina-edicao-prod'>
               <MenuLateral botaoClicado={botaoClicado}/>
               
               <div className='conteudo-edicao-cli'>
                 <Topo nomeObjetoModulo={'Produto'} descricaoModulo={'Visualize e edite os dados do cliente'}/>
 
-                <div className='dados-cli'>
-                  <DadosEdicao camposEdicao={CamposEdicaoProduto} dadosObjeto={DadosTesteEdicaoProd} modulo={'cli'}/>
+                <div className='dados-prod'>
+                  <DadosEdicao camposEdicao={CamposEdicaoProduto} dadosObjeto={DadosTesteEdicaoProd} modulo={'prod'}/>
                 </div>
 
               </div>
