@@ -7,6 +7,7 @@
 
 # testing
 /coverage
+/loginTeste
 
 # production
 /build

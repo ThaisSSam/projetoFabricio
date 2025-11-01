@@ -13,16 +13,16 @@ const CadastroFornecedor = () => {
   }
   return (
     <Fragment>
-          <div className='fundo-edicao-fornec'>
+          <div className='fundo-edicao-cli'>
             <Header clicarBotao={clicarBotao}/>
-            <div className='conteudo-pagina-edicao-fornec'>
+            <div className='conteudo-pagina-edicao-cli'>
               <MenuLateral botaoClicado={botaoClicado}/>
               
-              <div className='conteudo-edicao-fornec'>
+              <div className='conteudo-edicao-cli'>
                 <Topo nomeObjetoModulo={'Fornecedor'}/>
 
-                <div className='dados-fornec'>
-                  <DadosCadastro camposCadastro={CamposEdicaoFornecedor}/>
+                <div className='dados-cli'>
+                  <DadosCadastro camposCadastro={CamposEdicaoFornecedor} modulo='fornecedor'/>
                 </div>
 
               </div>

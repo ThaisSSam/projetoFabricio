@@ -1,7 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import './dados-cadastro.css';
 import CadastroClienteApi from '../../../../api/CadastroClienteApi';
-import CadastroPetApi from '../../../../api/CadastroPetApi';
+import CadastroFornecedorApi from '../../../../api/CadastroFornecedorApi';
+import CadastroFuncionarioApi from '../../../../api/CadastroFuncionarioApi';
+import CadastroProdutoApi from '../../../../api/CadastroProdutoApi';
+import CadastroPedidoApi from '../../../../api/CadastroPedidoApi';
 
 const DadosCadastro = ({ camposCadastro, modulo }) => {
   const [dadosCadastro, setDadosCadastro] = useState({});
@@ -36,9 +39,22 @@ const DadosCadastro = ({ camposCadastro, modulo }) => {
         <CadastroClienteApi dadosCliente={dadosCadastro} />
       )}
 
-      {modulo === 'pet' && dadosCadastro && (
-        <CadastroPetApi dadosPet={dadosCadastro} />
+      {modulo === 'funcionario' && dadosCadastro && (
+        <CadastroFuncionarioApi dadosFuncionario={dadosCadastro} />
       )}
+
+      {modulo === 'fornecedor' && dadosCadastro && (
+        <CadastroFornecedorApi dadosFornecedor={dadosCadastro} />
+      )}
+
+      {modulo === 'produto' && dadosCadastro && (
+        <CadastroProdutoApi dadosProduto={dadosCadastro} />
+      )}
+
+      {modulo === 'pedido' && dadosCadastro && (
+        <CadastroPedidoApi dadosPedido={dadosCadastro} />
+      )}
+
     </Fragment>
   );
 };

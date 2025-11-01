@@ -1,31 +1,26 @@
 import React from 'react'
 
-const CamposListagemPedido = [
+const CamposEdicaoPedido = [
     {
         nome:'Nome do cliente',
+        classe: 'ped-cliente',
         nomeAtributo: 'cliente'
     },
     {
         nome:'Nome do funcionário',
+        classe: 'ped-funcionario',
         nomeAtributo: 'funcionario'
     },
     {
         nome:'Total do pedido',
+        classe: 'ped-total',
         nomeAtributo: 'total'
     },
     {
         nome:'Data do pedido',
+        classe: 'ped-pedido',
         nomeAtributo: 'pedido'
-    },
-    // {
-    //     nome:'Excluir',
-    //     nomeAtributo: 'excluir'
-    // },
-    {
-        nome:'Editar',
-        nomeAtributo: 'editar',
-        linkEdicao: '/pedidos/'
     },
 ]
 
-export default CamposListagemPedido
+export default CamposEdicaoPedido

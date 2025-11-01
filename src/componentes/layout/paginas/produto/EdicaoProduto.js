@@ -2,7 +2,7 @@ import {React,  Fragment, useState } from 'react'
 import Header from '../../elementos/header/Header';
 import MenuLateral from '../../elementos/menu-lateral/MenuLateral';
 import Topo from '../elementos-gerais/topo-edicao/Topo';
-import './edicao-cliente.css';
+import '../cliente/edicao-cliente.css';
 import DadosEdicao from '../elementos-gerais/dados-edicao/DadosEdicao';
 import CamposEdicaoProduto from './CamposEdicaoProduto';
 import DadosTesteEdicaoProd from './DadosTesteEdicaoProd';
@@ -21,10 +21,10 @@ const EdicaoProduto = () => {
               <MenuLateral botaoClicado={botaoClicado}/>
               
               <div className='conteudo-edicao-cli'>
-                <Topo nomeObjetoModulo={'Produto'} descricaoModulo={'Visualize e edite os dados do cliente'}/>
+                <Topo nomeObjetoModulo={'Produto'} descricaoModulo={'Visualize e edite os dados do produto'}/>
 
-                <div className='dados-cli'>
-                  <DadosEdicao camposEdicao={CamposEdicaoProduto} dadosObjeto={DadosTesteEdicaoProd} modulo={'cli'}/>
+                <div className='dados-prod'>
+                  <DadosEdicao camposEdicao={CamposEdicaoProduto} dadosObjeto={DadosTesteEdicaoProd} modulo= 'produto'/>
                 </div>
 
               </div>
