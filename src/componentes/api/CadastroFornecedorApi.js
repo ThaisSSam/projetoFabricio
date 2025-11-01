@@ -28,7 +28,7 @@ function CadastroFornecedorApi({ dadosFornecedor }) {
   }, [dadosFornecedor]);
 
   if (error) {
-    return <div className='erro-cadastro-cli'>{error}</div>;
+    return <div className='erro-cadastro-forn'>{error}</div>;
   }
 
   if (fornecedor && Object.keys(fornecedor).length > 0) {

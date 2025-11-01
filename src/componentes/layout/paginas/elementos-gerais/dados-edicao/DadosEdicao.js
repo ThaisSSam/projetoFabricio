@@ -1,7 +1,11 @@
 import React, { Fragment, useState } from 'react';
 import './dados-edicao.css'
-import EdicaoPetApi from '../../../../api/EdicaoPetApi';
 import EdicaoClienteApi from '../../../../api/EdicaoClienteApi';
+import EdicaoFornecedorApi from '../../../../api/EdicaoFornecedorApi';
+import EdicaoFuncionarioApi from '../../../../api/EdicaoFuncionarioApi';
+import EdicaoPedidoApi from '../../../../api/EdicaoPedidoApi';
+import EdicaoProdutoApi from '../../../../api/EdicaoProdutoApi';
+
 
 const DadosEdicao = ({camposEdicao, dadosObjeto, modulo}) => {
     const [dadosEdicao, setDadosEdicao] = useState({});
@@ -44,13 +48,25 @@ const DadosEdicao = ({camposEdicao, dadosObjeto, modulo}) => {
         } 
 
         <button className={'botao-edicao'}>Enviar</button>
-      </form> 
-      {modulo === 'pet' && dadosEdicao && (
-        <EdicaoPetApi dadosPet={dadosEdicao} />
-      )}
-
+      </form>   
       {modulo === 'cliente' && dadosEdicao && (
         <EdicaoClienteApi dadosCliente={dadosEdicao} />
+      )}
+
+      {modulo === 'funcionario' && dadosEdicao && (
+        <EdicaoFuncionarioApi dadosFuncionario={dadosEdicao} />
+      )}
+
+      {modulo === 'fornecedor' && dadosEdicao && (
+        <EdicaoFornecedorApi dadosFornecedor={dadosEdicao} />
+      )}
+
+      {modulo === 'produto' && dadosEdicao && (
+        <EdicaoProdutoApi dadosProduto={dadosEdicao} />
+      )}
+
+      {modulo === 'pedido' && dadosEdicao && (
+        <EdicaoPedidoApi dadosPedido={dadosEdicao} />
       )}
     </Fragment>
   )

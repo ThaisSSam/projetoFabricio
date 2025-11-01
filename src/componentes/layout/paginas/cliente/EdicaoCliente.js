@@ -27,7 +27,7 @@ const EdicaoCliente = () => {
                 <Topo nomeObjetoModulo={'Cliente'} descricaoModulo={'Visualize e edite os dados do cliente'}/>
 
                 <div className='dados-cli'>
-                  <DadosEdicao camposEdicao={CamposEdicaoCliente} dadosObjeto={cliente} modulo={'cli'}/>
+                  <DadosEdicao camposEdicao={CamposEdicaoCliente} dadosObjeto={cliente} modulo= 'cliente'/>
                 </div>
 
               </div>
