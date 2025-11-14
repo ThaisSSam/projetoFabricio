@@ -17,10 +17,10 @@ const CamposListagemFuncionario = [
         nome:'Salário',
         nomeAtributo: 'salario'
     },
-    // {
-    //     nome:'Excluir',
-    //     nomeAtributo: 'excluir'
-    // },
+    {
+        nome:'Excluir',
+        nomeAtributo: 'excluir'
+    },
     {
         nome:'Editar',
         nomeAtributo: 'editar',

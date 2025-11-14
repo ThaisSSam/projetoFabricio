@@ -28,6 +28,8 @@ const DadosTesteListFunc = [
         salario: 1500.00,
         telefone: '(11)999999999',
         email: 'teste@gmail.com'
+
+        
     }
 ]
 

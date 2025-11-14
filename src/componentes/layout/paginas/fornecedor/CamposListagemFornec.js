@@ -17,10 +17,10 @@ const CamposListagemFornecedor = [
         nome:'Endereço',
         nomeAtributo: 'endereco'
     },
-    // {
-    //     nome:'Excluir',
-    //     nomeAtributo: 'excluir'
-    // },
+    {
+        nome:'Excluir',
+        nomeAtributo: 'excluir'
+    },
     {
         nome:'Editar',
         nomeAtributo: 'editar',
