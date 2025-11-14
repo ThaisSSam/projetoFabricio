@@ -2,6 +2,7 @@ import React from 'react';
 import * as FaIcon from 'react-icons/fa';
 import ExclusaoClienteApi from '../../../../api/ExclusaoClienteApi';
 import ExclusaoFuncionarioApi from '../../../../api/ExclusaoFuncionarioApi';
+import ExclusaoFornecedorApi from '../../../../api/ExclusaoFornecedorApi';
 
 function BotaoExclusao({ modulo, codigo }) {
   let api;
@@ -11,9 +12,9 @@ function BotaoExclusao({ modulo, codigo }) {
       api = ExclusaoClienteApi;
       break;
 
-    // case 'fornecedor':
-    //   api = ExclusaoFornecedorApi;
-    //   break;
+    case 'fornecedor':
+      api = ExclusaoFornecedorApi;
+      break;
 
     case 'funcionario':
       api = ExclusaoFuncionarioApi;
