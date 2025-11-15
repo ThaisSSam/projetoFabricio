@@ -1,0 +1,29 @@
+.conteudo-pagina-edicao-ped{
+    display: flex;
+}
+
+.conteudo-edicao-ped{
+    background-color: var(--corSecundaria);
+    width: 100vw;
+}
+
+.dados-ped{
+    background-color: var(--corBranco);
+    margin: 2vw;
+    padding-left: 25px;
+    padding-bottom: 30px;
+    margin-top: -2vw;
+}
+
+.dados-edicao-ped-nome {
+    padding-top: 30px;
+}
+
+.dados-edicao-ped-nome input,
+.dados-edicao-ped-email input,
+.dados-edicao-ped-telefone input,
+.dados-edicao-ped-endereco input
+{
+    margin-left: 10px;
+    width: 200px;
+}

@@ -29,7 +29,7 @@ const EdicaoFornecedor = () => {
             <Topo nomeObjetoModulo={'Fornecedor'} descricaoModulo={'Visualize e edite os dados do fornecedor'}/>
 
             <div className='dados-fornec'>
-              <DadosEdicao camposEdicao={CamposEdicaoFornecedor} dadosObjeto={DadosTesteEdicaoFornec} modulo={'fornec'}/>
+              <DadosEdicao camposEdicao={CamposEdicaoFornecedor} dadosObjeto={DadosTesteEdicaoFornec} modulo={'fornecedor'}/>
             </div>
 
           </div>

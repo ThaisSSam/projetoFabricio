@@ -29,7 +29,7 @@ const CamposListagemProduto = [
     {
         nome:'Editar',
         nomeAtributo: 'editar',
-        linkEdicao: '/produtos/'
+        linkEdicao: '/produtos/editar/'
     },
 ]
 

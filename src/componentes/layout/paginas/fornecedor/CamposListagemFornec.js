@@ -24,7 +24,7 @@ const CamposListagemFornecedor = [
     {
         nome:'Editar',
         nomeAtributo: 'editar',
-        linkEdicao: '/fornecedores/editar'
+        linkEdicao: '/fornecedores/editar/'
     },
 ]
 

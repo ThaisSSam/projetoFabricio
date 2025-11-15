@@ -24,7 +24,7 @@ const CamposListagemPedido = [
     {
         nome:'Editar',
         nomeAtributo: 'editar',
-        linkEdicao: '/pedidos/'
+        linkEdicao: '/pedidos/editar/'
     },
 ]
 
