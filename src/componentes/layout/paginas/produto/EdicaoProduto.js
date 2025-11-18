@@ -24,7 +24,7 @@ const EdicaoProduto = () => {
                 <Topo nomeObjetoModulo={'Produto'} descricaoModulo={'Visualize e edite os dados do produto'}/>
 
                 <div className='dados-prod'>
-                  <DadosEdicao camposEdicao={CamposEdicaoProduto} dadosObjeto={DadosTesteEdicaoProd} modulo= 'produto'/>
+                  <DadosEdicao camposEdicao={CamposEdicaoProduto} dadosObjeto={DadosTesteEdicaoProd} modulo= 'produtos'/>
                 </div>
 
               </div>

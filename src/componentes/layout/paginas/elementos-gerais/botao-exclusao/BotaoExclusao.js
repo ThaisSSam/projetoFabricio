@@ -4,11 +4,13 @@ import ExclusaoClienteApi from '../../../../api/ExclusaoClienteApi';
 import ExclusaoFuncionarioApi from '../../../../api/ExclusaoFuncionarioApi';
 import ExclusaoFornecedorApi from '../../../../api/ExclusaoFornecedorApi';
 import ExclusaoProdutoApi from '../../../../api/ExclusaoProdutoApi';
+import ExclusaoPedidoApi from '../../../../api/ExclusaoPedidoApi';
 
 function BotaoExclusao({ modulo, codigo }) {
   let api;
 
-  switch (modulo) {   
+  const mod = modulo.trim().toLowerCase();
+  switch (mod) {   
     case 'cliente':
       api = ExclusaoClienteApi;
       break;
@@ -21,13 +23,13 @@ function BotaoExclusao({ modulo, codigo }) {
       api = ExclusaoFuncionarioApi;
       break;
 
-    case 'produto ':
+    case 'produto':
       api = ExclusaoProdutoApi;
       break;
 
-    // case 'pedido':
-    //   api = ExclusaoPedidoApi;
-    //   break;
+    case 'pedido':
+      api = ExclusaoPedidoApi;
+      break;
 
     default:
       api = () => {};

@@ -17,10 +17,10 @@ const CamposListagemPedido = [
         nome:'Data do pedido',
         nomeAtributo: 'pedido'
     },
-    // {
-    //     nome:'Excluir',
-    //     nomeAtributo: 'excluir'
-    // },
+    {
+        nome:'Excluir',
+        nomeAtributo: 'excluir'
+    },
     {
         nome:'Editar',
         nomeAtributo: 'editar',

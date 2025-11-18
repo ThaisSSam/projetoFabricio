@@ -24,10 +24,10 @@ const EdicaoPedido = () => {
               <MenuLateral botaoClicado={botaoClicado}/>
               
               <div className='conteudo-edicao-ped'>
-                <Topo nomeObjetoModulo={'Pedido'} descricaoModulo={'Visualize e edite os dados do pedido'}/>
+                <Topo nomeObjetoModulo={'pedido'} descricaoModulo={'Visualize e edite os dados do pedido'}/>
 
                 <div className='dados-ped'>
-                  <DadosEdicao camposEdicao={CamposEdicaoPedido} dadosObjeto={pedido} modulo={'ped'}/>
+                  <DadosEdicao camposEdicao={CamposEdicaoPedido} dadosObjeto={pedido} modulo={'pedido'}/>
                 </div>
 
               </div>

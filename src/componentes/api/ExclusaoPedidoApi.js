@@ -1,27 +1,27 @@
 import { useState } from 'react';
 import Api from '../../Api'; 
 
-function ExclusaoProdutoApi() {
+function ExclusaoPedidoApi() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const excluir = (idProduto) => {
+  const excluir = (idPedido) => {
     setLoading(true);
     setError(null);
 
-    Api.delete(`/produto/excluir/${idProduto}`)
+    Api.delete(`/pedido/excluir/${idPedido}`)
       .then(() => {
         setLoading(false);
-        window.location.href = '/produtos' ;
+        window.location.href = '/pedidos' ;
       })
       .catch((err) => {
         setLoading(false);
-        setError('Ocorreu um erro ao excluir o produto. Tente novamente.');
-        console.error('Erro ao excluir o produto:', err);
+        setError('Ocorreu um erro ao excluir o pedido. Tente novamente.');
+        console.error('Erro ao excluir o pedido:', err);
       });
   };
 
   return { excluir, loading, error };
 }
 
-export default ExclusaoProdutoApi;
+export default ExclusaoPedidoApi;
