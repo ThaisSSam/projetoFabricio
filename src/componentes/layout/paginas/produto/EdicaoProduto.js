@@ -2,7 +2,7 @@ import {React,  Fragment, useState } from 'react'
 import Header from '../../elementos/header/Header';
 import MenuLateral from '../../elementos/menu-lateral/MenuLateral';
 import Topo from '../elementos-gerais/topo-edicao/Topo';
-import '../cliente/edicao-cliente.css';
+import '../produto/edicao-produto.css';
 import DadosEdicao from '../elementos-gerais/dados-edicao/DadosEdicao';
 import CamposEdicaoProduto from './CamposEdicaoProduto';
 import DadosTesteEdicaoProd from './DadosTesteEdicaoProd';
@@ -15,16 +15,16 @@ const EdicaoProduto = () => {
   }
   return (
     <Fragment>
-          <div className='fundo-edicao-cli'>
+          <div className='fundo-edicao-prod'>
             <Header clicarBotao={clicarBotao}/>
-            <div className='conteudo-pagina-edicao-cli'>
+            <div className='conteudo-pagina-edicao-prod'>
               <MenuLateral botaoClicado={botaoClicado}/>
               
-              <div className='conteudo-edicao-cli'>
+              <div className='conteudo-edicao-prod'>
                 <Topo nomeObjetoModulo={'Produto'} descricaoModulo={'Visualize e edite os dados do produto'}/>
 
                 <div className='dados-prod'>
-                  <DadosEdicao camposEdicao={CamposEdicaoProduto} dadosObjeto={DadosTesteEdicaoProd} modulo= 'produto'/>
+                  <DadosEdicao camposEdicao={CamposEdicaoProduto} dadosObjeto={DadosTesteEdicaoProd} modulo= 'produtos'/>
                 </div>
 
               </div>

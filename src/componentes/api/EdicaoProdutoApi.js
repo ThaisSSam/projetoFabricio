@@ -1,40 +1,45 @@
-import {React,  Fragment, useState } from 'react';
-import Header from '../layout/elementos/header/Header';
-import MenuLateral from '../layout/elementos/menu-lateral/MenuLateral';
-import Topo from '../layout/paginas/elementos-gerais/topo-edicao/Topo';
-import '../layout/paginas/cliente/edicao-cliente.css';
-import DadosEdicao from '../layout/paginas/elementos-gerais/dados-edicao/DadosEdicao';
-import CamposEdicaoProduto from '../layout/paginas/produto/CamposEdicaoProduto';
-import DetalheProdutoApi from '../api/DetalheProdutoApi';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import Api from '../../Api';
 
-const EdicaoProduto = () => {
-  const [botaoClicado, setBotaoClicado ] = useState(true);
+function EdicaoProdutoApi({ dadosProduto }) {
+  const [produto, setProduto] = useState(dadosProduto);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const { idProduto } = useParams();
 
-  const clicarBotao = () => {
-      setBotaoClicado(!botaoClicado);
+  useEffect(() => {
+    if (dadosProduto && Object.keys(dadosProduto).length > 0) {
+      setLoading(true);
+      Api
+        .put(`/produto/alterar/${idProduto}`, JSON.stringify(dadosProduto), {
+          headers: {
+            'Content-Type': 'application/json', 
+          }
+        })
+        .then((response) => {
+          console.log("Produto recebido da API:", response.data); 
+          setProduto(response.data);
+        })
+        .catch((err) => {
+          console.error("Erro ao atualizar o produto." + err);
+          setError("Ocorreu um erro ao atualizar o produto. Tente novamente mais tarde.");
+        })
+        .finally(() => setLoading(false));
+    }
+  }, [dadosProduto]);
+
+  if (error) {
+    return <div className='erro-atualizacao-produto'>{error}</div>;
   }
 
-  const produto = DetalheProdutoApi();
-
-  return (
-    <Fragment>
-          <div className='fundo-edicao-cli'>
-            <Header clicarBotao={clicarBotao}/>
-            <div className='conteudo-pagina-edicao-cli'>
-              <MenuLateral botaoClicado={botaoClicado}/>
-              
-              <div className='conteudo-edicao-cli'>
-                <Topo nomeObjetoModulo={'Produto'} descricaoModulo={'Visualize e edite os dados do produto'}/>
-
-                <div className='dados-cli'>
-                  <DadosEdicao camposEdicao={CamposEdicaoProduto} dadosObjeto={produto} modulo= 'produto'/>
-                </div>
-
-              </div>
-            </div>
-          </div>
-    </Fragment>
-  )
+  if (produto && Object.keys(produto).length > 0) {
+    return (
+      <div className='produto-atualizado'>
+        <h3>Produto <strong>{produto.nome}</strong> atualizado com sucesso!</h3>
+      </div>
+    );
+  }
 }
 
-export default EdicaoProduto
+export default EdicaoProdutoApi;

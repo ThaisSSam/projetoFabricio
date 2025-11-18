@@ -30,11 +30,6 @@ import CadastroPedido from '../componentes/layout/paginas/pedido/CadastroPedido'
 
 
 
-
-
-
-
-
 const Rotas = () => {
   return (
     <BrowserRouter>
@@ -58,15 +53,7 @@ const Rotas = () => {
                                  
           <Route element = {<ListagemProduto/>}     path= "/produtos" exact />
           <Route element = {<CadastroProduto/>}     path= "/produtos/cadastro" exact />
-          <Route element = {<EdicaoProduto/>}       path= "/produtos/editar/:idProduto" exact />
-
-
-           
-           
-           
-           
-           
-           
+          <Route element = {<EdicaoProduto/>}       path= "/produtos/editar/:idProduto" exact />           
            
           <Route element = {<ListagemPedido/>}      path= "/pedidos" exact />
           <Route element = {<CadastroPedido/>}      path= "/pedidos/cadastro" exact />

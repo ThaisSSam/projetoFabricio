@@ -22,12 +22,12 @@ const ListagemPedido = () => {
         <div className='conteudo-listagem-pedido'>
 
             <Topo 
-             nomeModulo={'Pedidos'}
+             nomeModulo={'pedido'}
              descricaoModulo={'Cadastre, altere e exclua pedidos'}
              caminhoModulo={'/pedidos'}
              />
 
-            <TabelaListagem camposTabela={CamposListagemPedido} dadosTabela={DadosTesteListPedido} nomeCampoId={'idPedido'}/>
+            <TabelaListagem camposTabela={CamposListagemPedido} dadosTabela={DadosTesteListPedido} nomeCampoId={'idPedido'} modulo={'pedido'}/>
 
         </div>
       </div>

@@ -22,14 +22,14 @@ const CamposListagemProduto = [
         nomeAtributo:'nomeFornecedor'
 
     },
-    // {
-    //     nome:'Excluir',
-    //     nomeAtributo: 'excluir'
-    // },
+    {
+        nome:'Excluir',
+        nomeAtributo: 'excluir'
+    },
     {
         nome:'Editar',
         nomeAtributo: 'editar',
-        linkEdicao: '/produtos/'
+        linkEdicao: '/produtos/editar/'
     },
 ]
 
