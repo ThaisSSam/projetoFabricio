@@ -7,3 +7,7 @@
     background-color: var(--corSecundaria);
     width: 100vw;
 }
+
+.conteudo-pagina-listagem-acoes-usuario{
+    display: flex;
+}

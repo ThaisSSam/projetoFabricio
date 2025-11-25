@@ -31,3 +31,12 @@ table{
 .tr-listagem:nth-child(even){
     background-color: #eeeeee;
 }
+
+.li-listagem-header {
+    display: flex;
+    align-items: center; 
+}
+
+.nome-campo-header-acao {
+    margin-left: 5px; 
+}
