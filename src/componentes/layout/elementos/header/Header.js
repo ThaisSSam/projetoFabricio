@@ -3,6 +3,7 @@ import './header.css';
 import ImagemHeader from '../../../imagens/logo-removebg-preview.png';
 import * as MdIcons from 'react-icons/md';
 import DadosTesteLogin from './DadosTesteLogin';
+import { useNavigate } from "react-router-dom";
 
 const Header = ({clicarBotao}) => {
 
@@ -15,6 +16,16 @@ const Header = ({clicarBotao}) => {
        clicarBotao(botaoClicado);
     }
 
+    const navigate = useNavigate();
+
+    
+    const clicarBotaoUsuario = () => {
+        setBotaoClicado(!botaoClicado);
+        clicarBotao(botaoClicado);
+        navigate('/usuario');
+    }
+
+
   return (
     <div className='header'>
 
@@ -25,7 +36,7 @@ const Header = ({clicarBotao}) => {
 
         <div className='dados-login-header'>
             <a className='link-botao-funcionario-logado-header'>
-                <button className='botao-funcionario-logado-header'>
+                <button className='botao-funcionario-logado-header' onClick={clicarBotaoUsuario}>
                     <i>{<MdIcons.MdPerson/>}</i>
                 </button>
             </a>

@@ -28,6 +28,7 @@ import ListagemPedido from '../componentes/layout/paginas/pedido/ListagemPedido'
 import EdicaoPedido from '../componentes/layout/paginas/pedido/EdicaoPedido';
 import CadastroPedido from '../componentes/layout/paginas/pedido/CadastroPedido';
 
+import AcoesUsuario from '../componentes/layout/paginas/usuario/ListagemAcoes';
 
 
 const Rotas = () => {
@@ -58,8 +59,12 @@ const Rotas = () => {
           <Route element = {<ListagemPedido/>}      path= "/pedidos" exact />
           <Route element = {<CadastroPedido/>}      path= "/pedidos/cadastro" exact />
           <Route element = {<EdicaoPedido/>}        path= "/pedidos/editar/:idPedido" exact />
+
+
            
-           
+          <Route element={<AcoesUsuario/>} 
+          path="/usuario" exact />
+ 
           
           
         </Routes>
