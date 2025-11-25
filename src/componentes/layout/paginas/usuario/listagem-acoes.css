@@ -1,0 +1,13 @@
+.conteudo-pagina-acoes-usuario{
+    display: flex;
+}
+
+.conteudo-acoes-usuario{
+    display: flex;
+    background-color: var(--corSecundaria);
+    width: 100vw;
+}
+
+.conteudo-pagina-listagem-acoes-usuario{
+    display: flex;
+}
