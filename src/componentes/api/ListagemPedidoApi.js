@@ -7,26 +7,22 @@ const ListagemPedidosApi = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    Api.get("/pedido/listar")
-      .then((response) => {
-        setPedidos(response.data)
-      })
-      .catch((err) => {
-        console.error("Nenhum pedido encontrado." + err);
-        setError("Ocorreu um erro ao buscar os pedidos. Tente novamente mais tarde.");
-      })
-      .finally(() => setLoading(false));
+    const fetchPedidos = async () => {
+      try {
+        const response = await Api.get('/api/sales');
+        setPedidos(response.data || []);
+      } catch (err) {
+        console.error('Nenhum pedido encontrado.', err);
+        setError('Ocorreu um erro ao buscar os pedidos. Tente novamente mais tarde.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPedidos();
   }, []);
 
-  if (loading) {
-    return []
-  }
-
-  if (error) {
-    return []
-  }
-
-  return pedidos;
+  return { pedidos, loading, error };
 };
 
 export default ListagemPedidosApi;

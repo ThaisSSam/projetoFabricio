@@ -3,7 +3,7 @@ import React from 'react'
 const CamposListagemFuncionario = [
     {
         nome:'Nome',
-        nomeAtributo: 'nome'
+        nomeAtributo: 'name'
     },
     {
         nome:'E-mail',
@@ -11,11 +11,7 @@ const CamposListagemFuncionario = [
     },
     {
         nome:'Telefone',
-        nomeAtributo: 'telefone'
-    },
-    {
-        nome:'Salário',
-        nomeAtributo: 'salario'
+        nomeAtributo: 'phone'
     },
     {
         nome:'Excluir',

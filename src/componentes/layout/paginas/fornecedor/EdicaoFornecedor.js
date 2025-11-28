@@ -6,8 +6,7 @@ import MenuLateral from '../../elementos/menu-lateral/MenuLateral';
 import Topo from '../elementos-gerais/topo-edicao/Topo';
 import DadosEdicao from '../elementos-gerais/dados-edicao/DadosEdicao';
 import './edicao-fornecedor.css'
-import DetalheFornecedorApi from '../../../api/DetalheFornecedorApi';
-
+import useDetalheFornecedor from '../../../api/DetalheFornecedorApi';
 
 const EdicaoFornecedor = () => {
   const [botaoClicado, setBotaoClicado ] = useState(true);
@@ -16,7 +15,7 @@ const EdicaoFornecedor = () => {
       setBotaoClicado(!botaoClicado);
   }
 
-  const fornecedor = DetalheFornecedorApi();
+  const { fornecedor, loading, error } = useDetalheFornecedor();
       
   return (
     <Fragment>
@@ -29,7 +28,7 @@ const EdicaoFornecedor = () => {
             <Topo nomeObjetoModulo={'Fornecedor'} descricaoModulo={'Visualize e edite os dados do fornecedor'}/>
 
             <div className='dados-fornec'>
-              <DadosEdicao camposEdicao={CamposEdicaoFornecedor} dadosObjeto={DadosTesteEdicaoFornec} modulo={'fornecedor'}/>
+              <DadosEdicao camposEdicao={CamposEdicaoFornecedor} dadosObjeto={fornecedor} modulo={'fornecedor'}/>
             </div>
 
           </div>

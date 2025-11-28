@@ -9,15 +9,15 @@ function CadastroFornecedorApi({ dadosFornecedor }) {
   useEffect(() => {
     if (dadosFornecedor && Object.keys(dadosFornecedor).length > 0) {
       setLoading(true);
+      Api.get('/sanctum/csrf-cookie');
       Api
-        .post("/fornecedor/salvar", JSON.stringify(dadosFornecedor), {
+        .post("/api/vendors", JSON.stringify(dadosFornecedor), {
           headers: {
             'Content-Type': 'application/json', // Definindo o Content-Type
           }
         })
         .then((response) => {
-          console.log("Fornecedor recebido da API:", response.data); // Verificando os dados
-          setFornecedor(response.data);
+          window.location.href = '/fornecedores';
         })
         .catch((err) => {
           console.error("Erro ao cadastrar fornecedor." + err);

@@ -3,43 +3,44 @@ import { useParams } from 'react-router-dom';
 import Api from '../../Api';
 
 function EdicaoPedidoApi({ dadosPedido }) {
-  const [pedido, setPedido] = useState(dadosPedido);
+  const [pedido, setPedido] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const { idPedido } = useParams();
 
   useEffect(() => {
-    if (dadosPedido && Object.keys(dadosPedido).length > 0) {
+    if (!dadosPedido || Object.keys(dadosPedido).length === 0) return;
+    console.log('EdicaoPedidoApi: dadosPedido changed ->', dadosPedido);
+
+    const doUpdate = async () => {
       setLoading(true);
-      Api
-        .put(`/pedido/alterar/${idPedido}`, JSON.stringify(dadosPedido), {
-          headers: {
-            'Content-Type': 'application/json', 
-          }
-        })
-        .then((response) => {
-          console.log("Pedido recebido da API:", response.data); 
-          setPedido(response.data);
-        })
-        .catch((err) => {
-          console.error("Erro ao atualizar o pedido." + err);
-          setError("Ocorreu um erro ao atualizar o pedido. Tente novamente mais tarde.");
-        })
-        .finally(() => setLoading(false));
-    }
-  }, [dadosPedido]);
+      setError(null);
+      try {
+        await Api.get('/sanctum/csrf-cookie');
+        const response = await Api.put(`/api/sales/${idPedido}`, dadosPedido);
+      } catch (err) {
+        console.error('Erro ao atualizar pedido:', err);
+        setError('Ocorreu um erro ao atualizar o pedido. Tente novamente.');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (error) {
-    return <div className='erro-atualizacao-pedido'>{error}</div>;
-  }
+    doUpdate();
+  }, [dadosPedido, idPedido]);
 
+  if (loading) return <div className='loading-atualizacao-prod'>Atualizando...</div>;
+  if (error) return <div className='erro-atualizacao-prod'>{error}</div>;
   if (pedido && Object.keys(pedido).length > 0) {
+    const message = pedido.message || pedido.nome || 'Pedido atualizado com sucesso!';
     return (
       <div className='pedido-atualizado'>
-        <h3>Pedido <strong>{pedido.nome}</strong> atualizado com sucesso!</h3>
+        <h3>{message}</h3>
       </div>
     );
   }
+
+  return null;
 }
 
 export default EdicaoPedidoApi;

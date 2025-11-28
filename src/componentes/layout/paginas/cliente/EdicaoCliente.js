@@ -14,7 +14,7 @@ const EdicaoCliente = () => {
       setBotaoClicado(!botaoClicado);
   }
 
-  const cliente = DetalheClienteApi();
+  const {cliente, loading, error} = DetalheClienteApi();
 
   return (
     <Fragment>

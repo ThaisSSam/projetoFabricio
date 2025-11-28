@@ -4,27 +4,27 @@ const CamposEdicaoProduto = [
     {
         nome:'Nome',
         classe: 'prod-nome',
-        nomeAtributo: 'nome'
+        nomeAtributo: 'name'
     },
     {
         nome:'Estoque',
         classe: 'prod-estoque',
-        nomeAtributo: 'estoque'
+        nomeAtributo: 'stock'
     },
     {
         nome:'Preço',
         classe: 'prod-preco',
-        nomeAtributo: 'preco'
+        nomeAtributo: 'price'
     },
     {
         nome:'Custo',
         classe: 'prod-custo',
-        nomeAtributo: 'custo'
+        nomeAtributo: 'cost'
     },
     {
         nome:'Fornecedor',
         classe: 'prod-fornecedor',
-        nomeAtributo: 'fornecedor'
+        nomeAtributo: 'vendor_id'
     },
 ]
 

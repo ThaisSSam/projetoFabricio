@@ -1,41 +1,31 @@
-import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Api from '../../Api';
 
-function DetalheProdutoApi() {
-  const [produto, setProduto] = useState();
-  const [error, setError] = useState(null);
+// Custom hook that returns the product + loading and error states
+const useDetalheProduto = () => {
+  const [produto, setProduto] = useState({});
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { idProduto } = useParams();
 
   useEffect(() => {
-    if (idProduto) {
-      setLoading(true);
-      Api
-        .get(`/produto/buscar/${idProduto}`)
-        .then((response) => {
-          console.log("Produto recebido da API:", response.data); 
-          setProduto(response.data);
-        })
-        .catch((err) => {
-          console.error("Erro ao atualizar o produto." + err);
-          setError("Ocorreu um erro ao atualizar o produto. Tente novamente mais tarde.");
-        })
-        .finally(() => setLoading(false));
-    }
-  }, []);
+    const fetchProduto = async () => {
+      try {
+        const response = await Api.get(`/api/products/${idProduto}`);
+        setProduto(response.data || {});
+      } catch (err) {
+        console.error('Produto não encontrado.', err);
+        setError('Ocorreu um erro ao buscar o produto. Tente novamente mais tarde.');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (loading) {
-    return "Carregando dados do produto..."
-  }
+    fetchProduto();
+  }, [idProduto]);
 
-  if (error) {
-    return <div className='erro-atualizacao-produto'>{error}</div>;
-  }
+  return { produto, loading, error };
+};
 
-  if (produto && Object.keys(produto).length > 0) {
-    return produto;
-  }
-}
-
-export default DetalheProdutoApi;
+export default useDetalheProduto;

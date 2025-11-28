@@ -14,7 +14,7 @@ const EdicaoFuncionario = () => {
       setBotaoClicado(!botaoClicado);
   }
 
-  const funcionario = DetalheFuncionarioApi();
+  const {funcionario, loading, error} = DetalheFuncionarioApi();
 
   return (
     <Fragment>

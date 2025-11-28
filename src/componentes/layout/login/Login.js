@@ -1,19 +1,13 @@
 import React, { Fragment, useState } from 'react';
-import loginAdmData from '../../../loginTeste/loginAdmin.js';
 import './login.css';
 import ImagemPata from '../../imagens/logo-removebg-preview.png';
+import LoginApi from '../../api/LoginApi.js';
 
-const Login = () => {
+function Login () {
   const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-
-  const handleLogin = () => {
-    if (email === loginAdmData.loginAdm && senha === loginAdmData.senhaAdm) {
-      window.location.href = '/dashboard';
-    } else {
-      alert('Email ou senha incorretos!');
-    }
-  };
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   return (
     <Fragment>
@@ -31,13 +25,30 @@ const Login = () => {
             <input
               placeholder='Senha'
               type='password'
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
           <div className='botoes-login'>
-            <button onClick={handleLogin}>Entrar</button>
+            <button
+              onClick={async () => {
+                setLoading(true);
+                setError(null);
+                try {
+                  await LoginApi({ email, password });
+                } catch (err) {
+                  console.error(err);
+                  setError('Erro ao fazer login. Verifique suas credenciais.');
+                } finally {
+                  setLoading(false);
+                }
+              }}
+              disabled={loading}
+            >
+              {loading ? 'Entrando...' : 'Entrar'}
+            </button>
+            {error && <div className='erro-login'>{error}</div>}
             <p>Não tem conta? <a href='/cadastro'>Cadastre-se</a></p>
           </div>
         </div>

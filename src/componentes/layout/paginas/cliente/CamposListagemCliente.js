@@ -3,19 +3,23 @@ import React from 'react'
 const CamposListagemCliente = [
     {
         nome:'Código',
-        nomeAtributo: 'codigo'
+        nomeAtributo: 'id'
     },
     {
         nome:'Nome',
-        nomeAtributo: 'nome'
+        nomeAtributo: 'name'
     },
     {
         nome:'E-mail',
         nomeAtributo: 'email'
     },
     {
+        nome:'CPF / CNPJ',
+        nomeAtributo: 'cpf_cnpj'
+    },
+    {
         nome:'Telefone',
-        nomeAtributo: 'telefone'
+        nomeAtributo: 'phone'
     },
     {
         nome:'Excluir',

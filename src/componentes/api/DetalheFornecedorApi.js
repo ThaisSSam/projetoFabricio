@@ -1,41 +1,32 @@
-import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Api from '../../Api';
 
-function DetalheFornecedorApi() {
-  const [fornecedor, setFornecedor] = useState();
-  const [error, setError] = useState(null);
+// Custom hook that returns the product + loading and error states
+const useDetalheFornecedor = () => {
+  const [fornecedor, setFornecedor] = useState({});
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { idFornecedor } = useParams();
 
   useEffect(() => {
-    if (idFornecedor) {
-      setLoading(true);
-      Api
-        .get(`/fornecedor/buscar/${idFornecedor}`)
-        .then((response) => {
-          console.log("Fornecedor recebido da API:", response.data); 
-          setFornecedor(response.data);
-        })
-        .catch((err) => {
-          console.error("Erro ao atualizar o fornecedor." + err);
-          setError("Ocorreu um erro ao atualizar o fornecedor. Tente novamente mais tarde.");
-        })
-        .finally(() => setLoading(false));
-    }
-  }, []);
+    const fetchFornecedor = async () => {
+      try {
+        await Api.get('/sanctum/csrf-cookie');
+        const response = await Api.get(`/api/vendors/${idFornecedor}`);
+        setFornecedor(response.data || {});
+      } catch (err) {
+        console.error('Fornecedor não encontrado.', err);
+        setError('Ocorreu um erro ao buscar o fornecedor. Tente novamente mais tarde.');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (loading) {
-    return "Carregando dados do fornecedor..."
-  }
+    fetchFornecedor();
+  }, [idFornecedor]);
 
-  if (error) {
-    return <div className='erro-atualizacao-fornecedor'>{error}</div>;
-  }
+  return { fornecedor, loading, error };
+};
 
-  if (fornecedor && Object.keys(fornecedor).length > 0) {
-    return fornecedor;
-  }
-}
-
-export default DetalheFornecedorApi;
+export default useDetalheFornecedor;
