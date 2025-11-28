@@ -8,8 +8,8 @@ function ExclusaoFuncionarioApi() {
   const excluir = (idFuncionario) => {
     setLoading(true);
     setError(null);
-
-    Api.delete(`/funcionario/excluir/${idFuncionario}`)
+    Api.get('/sanctum/csrf-cookie');
+    Api.delete(`/api/users/${idFuncionario}`)
       .then(() => {
         setLoading(false);
         window.location.href = '/funcionarios' ;

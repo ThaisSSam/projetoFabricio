@@ -5,11 +5,11 @@ function ExclusaoPedidoApi() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const excluir = (idPedido) => {
+  const excluir = async (idProduto) => {
     setLoading(true);
     setError(null);
-
-    Api.delete(`/pedido/excluir/${idPedido}`)
+    await Api.get('/sanctum/csrf-cookie');
+    Api.delete(`/api/sales/${idProduto}`)
       .then(() => {
         setLoading(false);
         window.location.href = '/pedidos' ;

@@ -4,7 +4,7 @@ const CamposEdicaoCliente = [
     {
         nome:'Nome',
         classe: 'cli-nome',
-        nomeAtributo: 'nome'
+        nomeAtributo: 'name'
     },
     {
         nome:'E-mail',
@@ -12,14 +12,19 @@ const CamposEdicaoCliente = [
         nomeAtributo: 'email'
     },
     {
+        nome:'CPF / CNPJ',
+        classe: 'cli-cpf-cnpj',
+        nomeAtributo: 'cpf_cnpj'
+    },
+    {
         nome:'Telefone',
         classe: 'cli-telefone',
-        nomeAtributo: 'telefone'
+        nomeAtributo: 'phone'
     },
     {
         nome:'Endereço',
         classe: 'cli-endereco',
-        nomeAtributo: 'endereco'
+        nomeAtributo: 'address'
     },
 ]
 

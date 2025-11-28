@@ -2,24 +2,28 @@ import React from 'react'
 
 const CamposListagemProduto = [
     {
+        nome:'Código',
+        nomeAtributo: 'id'
+    },
+    {
         nome:'Nome',
-        nomeAtributo: 'nome'
+        nomeAtributo: 'name'
     },
     {
         nome:'Estoque',
-        nomeAtributo: 'estoque'
+        nomeAtributo: 'stock'
     },
     {
         nome:'Preço',
-        nomeAtributo: 'preco'
+        nomeAtributo: 'price'
     },
     {
         nome:'Custo',
-        nomeAtributo: 'custo'
+        nomeAtributo: 'cost'
     },
     {
-        nome:'Fornecedor',
-        nomeAtributo:'nomeFornecedor'
+        nome:'Código Fornecedor',
+        nomeAtributo:'vendor_id'
 
     },
     {

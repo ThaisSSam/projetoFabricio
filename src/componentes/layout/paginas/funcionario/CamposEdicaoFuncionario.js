@@ -4,7 +4,7 @@ const CamposEdicaoFuncionario = [
     {
         nome:'Nome',
         classe: 'func-nome',
-        nomeAtributo: 'nome'
+        nomeAtributo: 'name'
     },
     {
         nome:'E-mail',
@@ -14,17 +14,17 @@ const CamposEdicaoFuncionario = [
     {
         nome:'Telefone',
         classe: 'func-telefone',
-        nomeAtributo: 'telefone'
+        nomeAtributo: 'phone'
     },
     {
         nome:'Endereço',
         classe: 'func-endereco',
-        nomeAtributo: 'endereco'
+        nomeAtributo: 'address'
     },
     {
-        nome:'Salário',
-        classe: 'func-salario',
-        nomeAtributo: 'salario'
+        nome:'CPF / CNPJ',
+        classe: 'func-cpf-cnpj',
+        nomeAtributo: 'cpf_cnpj'
     },
 ]
 

@@ -3,39 +3,29 @@ import { useParams } from 'react-router-dom';
 import Api from '../../Api';
 
 function DetalheFuncionarioApi() {
-  const [funcionario, setFuncionario] = useState();
-  const [error, setError] = useState(null);
+  const [funcionario, setFuncionario] = useState({});
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { idFuncionario } = useParams();
 
   useEffect(() => {
-    if (idFuncionario) {
-      setLoading(true);
-      Api
-        .get(`/funcionario/buscar/${idFuncionario}`)
-        .then((response) => {
-          console.log("Funcionario recebido da API:", response.data); 
-          setFuncionario(response.data);
-        })
-        .catch((err) => {
-          console.error("Erro ao atualizar o funcionario." + err);
-          setError("Ocorreu um erro ao atualizar o funcionario. Tente novamente mais tarde.");
-        })
-        .finally(() => setLoading(false));
-    }
-  }, []);
+    const fetchFuncionario = async () => {
+      try {
+        await Api.get('/sanctum/csrf-cookie');
+        const response = await Api.get(`/api/users/${idFuncionario}`);
+        setFuncionario(response.data || {});
+      } catch (err) {
+        console.error('Funcionario não encontrado.', err);
+        setError('Ocorreu um erro ao buscar o funcionario. Tente novamente mais tarde.');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (loading) {
-    return "Carregando dados do funcionario..."
-  }
+    fetchFuncionario();
+  }, [idFuncionario]);
 
-  if (error) {
-    return <div className='erro-atualizacao-funcionario'>{error}</div>;
-  }
-
-  if (funcionario && Object.keys(funcionario).length > 0) {
-    return funcionario;
-  }
+  return { funcionario, loading, error };
 }
 
 export default DetalheFuncionarioApi;

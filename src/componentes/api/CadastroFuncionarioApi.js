@@ -9,15 +9,15 @@ function CadastroFuncionarioApi({ dadosFuncionario }) {
   useEffect(() => {
     if (dadosFuncionario && Object.keys(dadosFuncionario).length > 0) {
       setLoading(true);
+      Api.get('/sanctum/csrf-cookie');
       Api
-        .post("/funcionario/salvar", JSON.stringify(dadosFuncionario), {
+        .post("/api/users", JSON.stringify(dadosFuncionario), {
           headers: {
             'Content-Type': 'application/json', // Definindo o Content-Type
           }
         })
         .then((response) => {
-          console.log("Funcionario recebido da API:", response.data); // Verificando os dados
-          setFuncionario(response.data);
+          window.location.href = '/funcionarios';
         })
         .catch((err) => {
           console.error("Erro ao cadastrar funcionario." + err);
@@ -28,7 +28,7 @@ function CadastroFuncionarioApi({ dadosFuncionario }) {
   }, [dadosFuncionario]);
 
   if (error) {
-    return <div className='erro-cadastro-cli'>{error}</div>;
+    return <div className='erro-cadastro-forn'>{error}</div>;
   }
 
   if (funcionario && Object.keys(funcionario).length > 0) {

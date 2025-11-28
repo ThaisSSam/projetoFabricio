@@ -9,15 +9,15 @@ function CadastroClienteApi({ dadosCliente }) {
   useEffect(() => {
     if (dadosCliente && Object.keys(dadosCliente).length > 0) {
       setLoading(true);
+      Api.get('/sanctum/csrf-cookie');
       Api
-        .post("/cliente/salvar", JSON.stringify(dadosCliente), {
+        .post("/api/customers", JSON.stringify(dadosCliente), {
           headers: {
             'Content-Type': 'application/json', // Definindo o Content-Type
           }
         })
         .then((response) => {
-          console.log("Cliente recebido da API:", response.data); // Verificando os dados
-          setCliente(response.data);
+          window.location.href = '/clientes';
         })
         .catch((err) => {
           console.error("Erro ao cadastrar cliente." + err);
@@ -28,7 +28,7 @@ function CadastroClienteApi({ dadosCliente }) {
   }, [dadosCliente]);
 
   if (error) {
-    return <div className='erro-cadastro-cli'>{error}</div>;
+    return <div className='erro-cadastro-forn'>{error}</div>;
   }
 
   if (cliente && Object.keys(cliente).length > 0) {

@@ -5,7 +5,7 @@ import './listagem-pedido.css'
 import Topo from '../elementos-gerais/topo-listagem/Topo.js';
 import CamposListagemPedido from './CamposListagemPedido.js';
 import TabelaListagem from '../elementos-gerais/tabela-listagem/TabelaListagem.js';
-import DadosTesteListPedido from './DadosTesteListPedido.js';
+import ListagemPedidoApi from '../../../api/ListagemPedidoApi.js';
 
 const ListagemPedido = () => {
     const [botaoClicado, setBotaoClicado ] = useState(true);
@@ -13,6 +13,8 @@ const ListagemPedido = () => {
     const clicarBotao = () => {
         setBotaoClicado(!botaoClicado);
     }
+
+    const { pedidos, loading, error } = ListagemPedidoApi();
   return (
     <div className='fundo-listagem-pedido'>
       <Header clicarBotao={clicarBotao}/>
@@ -22,12 +24,12 @@ const ListagemPedido = () => {
         <div className='conteudo-listagem-pedido'>
 
             <Topo 
-             nomeModulo={'pedido'}
+             nomeModulo={'Pedidos'}
              descricaoModulo={'Cadastre, altere e exclua pedidos'}
              caminhoModulo={'/pedidos'}
              />
 
-            <TabelaListagem camposTabela={CamposListagemPedido} dadosTabela={DadosTesteListPedido} nomeCampoId={'idPedido'} modulo={'pedido'}/>
+            <TabelaListagem camposTabela={CamposListagemPedido} dadosTabela={pedidos} nomeCampoId={'id'} modulo={'pedido'}/>
 
         </div>
       </div>

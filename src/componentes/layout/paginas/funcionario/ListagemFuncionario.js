@@ -5,7 +5,7 @@ import './listagem-funcionario.css'
 import Topo from '../elementos-gerais/topo-listagem/Topo.js';
 import CamposListagemFuncionario from './CamposListagemFuncionario.js';
 import TabelaListagem from '../elementos-gerais/tabela-listagem/TabelaListagem.js';
-import DadosTesteListFunc from './DadosTesteListFunc.js';
+import ListagemFuncionariosApi from '../../../api/ListagemFuncionarioApi.js';
 
 const ListagemFuncionario = () => {
     const [botaoClicado, setBotaoClicado ] = useState(true);
@@ -13,6 +13,8 @@ const ListagemFuncionario = () => {
     const clicarBotao = () => {
         setBotaoClicado(!botaoClicado);
     }
+
+    const {funcionarios, loading, error} = ListagemFuncionariosApi();
   return (
     <div className='fundo-listagem-func'>
       <Header clicarBotao={clicarBotao}/>
@@ -27,7 +29,7 @@ const ListagemFuncionario = () => {
              caminhoModulo={'/funcionarios'}
              />
 
-            <TabelaListagem camposTabela={CamposListagemFuncionario} dadosTabela={DadosTesteListFunc} nomeCampoId={'idFuncionario'} modulo={'funcionario'}/>
+            <TabelaListagem camposTabela={CamposListagemFuncionario} dadosTabela={funcionarios} nomeCampoId={'id'} modulo={'funcionario'}/>
 
         </div>
       </div>

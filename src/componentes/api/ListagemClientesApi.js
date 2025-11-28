@@ -7,26 +7,22 @@ const ListagemClientesApi = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    Api.get("/cliente/listar")
-      .then((response) => {
-        setClientes(response.data)
-      })
-      .catch((err) => {
-        console.error("Nenhum cliente encontrado." + err);
-        setError("Ocorreu um erro ao buscar os clientes. Tente novamente mais tarde.");
-      })
-      .finally(() => setLoading(false));
+    const fetchClientes = async () => {
+      try {
+        const response = await Api.get('/api/customers');
+        setClientes(response.data || []);
+      } catch (err) {
+        console.error('Nenhum cliente encontrado.', err);
+        setError('Ocorreu um erro ao buscar os clientes. Tente novamente mais tarde.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchClientes();
   }, []);
 
-  if (loading) {
-    return []
-  }
-
-  if (error) {
-    return []
-  }
-
-  return clientes;
+  return { clientes, loading, error };
 };
 
 export default ListagemClientesApi;

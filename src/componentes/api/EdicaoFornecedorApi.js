@@ -1,45 +1,46 @@
-import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import Api from '../../Api';
 
-function EdicaoFornecedorApi({ dadosFornecedor }) {
-  const [fornecedor, setFornecedor] = useState(dadosFornecedor);
+function EdicaoFornecedorApi({ dadosFornecedor}) {
+  const [fornecedor, setFornecedor] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const { idFornecedor } = useParams();
 
   useEffect(() => {
-    if (dadosFornecedor && Object.keys(dadosFornecedor).length > 0) {
+    if (!dadosFornecedor || Object.keys(dadosFornecedor).length === 0) return;
+    console.log('EdicaoFornecedorApi: dadosFornecedor changed ->', dadosFornecedor);
+
+    const doUpdate = async () => {
       setLoading(true);
-      Api
-        .put(`/fornecedor/alterar/${idFornecedor}`, JSON.stringify(dadosFornecedor), {
-          headers: {
-            'Content-Type': 'application/json', 
-          }
-        })
-        .then((response) => {
-          console.log("Fornecedor recebido da API:", response.data); 
-          setFornecedor(response.data);
-        })
-        .catch((err) => {
-          console.error("Erro ao atualizar o fornecedor." + err);
-          setError("Ocorreu um erro ao atualizar o fornecedor. Tente novamente mais tarde.");
-        })
-        .finally(() => setLoading(false));
-    }
-  }, [dadosFornecedor]);
+      setError(null);
+      try {
+        await Api.get('/sanctum/csrf-cookie');
+        const response = await Api.put(`/api/vendors/${idFornecedor}`, dadosFornecedor);
+      } catch (err) {
+        console.error('Erro ao atualizar fornecedor:', err);
+        setError('Ocorreu um erro ao atualizar o fornecedor. Tente novamente.');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (error) {
-    return <div className='erro-atualizacao-fornecedor'>{error}</div>;
-  }
+    doUpdate();
+  }, [dadosFornecedor, idFornecedor]);
 
+  if (loading) return <div className='loading-atualizacao-prod'>Atualizando...</div>;
+  if (error) return <div className='erro-atualizacao-prod'>{error}</div>;
   if (fornecedor && Object.keys(fornecedor).length > 0) {
+    const message = fornecedor.message || fornecedor.nome || 'Fornecedor atualizado com sucesso!';
     return (
       <div className='fornecedor-atualizado'>
-        <h3>Fornecedor <strong>{fornecedor.nome}</strong> atualizado com sucesso!</h3>
+        <h3>{message}</h3>
       </div>
     );
   }
+
+  return null;
 }
 
 export default EdicaoFornecedorApi;

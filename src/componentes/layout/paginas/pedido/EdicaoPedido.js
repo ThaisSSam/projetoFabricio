@@ -14,7 +14,7 @@ const EdicaoPedido = () => {
       setBotaoClicado(!botaoClicado);
   }
 
-  const pedido = DetalhePedidoApi();
+  const { pedido, loading, error } = DetalhePedidoApi();
 
   return (
     <Fragment>

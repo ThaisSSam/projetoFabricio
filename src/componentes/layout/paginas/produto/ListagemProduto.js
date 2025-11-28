@@ -5,7 +5,7 @@ import './listagem-prod.css'
 import Topo from '../elementos-gerais/topo-listagem/Topo.js';
 import CamposListagemProd from './CamposListagemProd.js';
 import TabelaListagem from '../elementos-gerais/tabela-listagem/TabelaListagem.js';
-import DadosTesteListProd from './DadosTesteListProd.js';
+import useListagemProdutos from '../../../api/ListagemProdutosApi.js';
 
 const ListagemProduto = () => {
     const [botaoClicado, setBotaoClicado ] = useState(true);
@@ -13,6 +13,7 @@ const ListagemProduto = () => {
     const clicarBotao = () => {
         setBotaoClicado(!botaoClicado);
     }
+    const { produtos, loading, error } = useListagemProdutos();
   return (
     <div className='fundo-listagem-prod'>
       <Header clicarBotao={clicarBotao}/>
@@ -26,8 +27,7 @@ const ListagemProduto = () => {
              descricaoModulo={'Cadastre, altere e exclua produtos'}
              caminhoModulo={'/produtos'}
              />
-
-            <TabelaListagem camposTabela={CamposListagemProd} dadosTabela={DadosTesteListProd} nomeCampoId={'idProduto'} modulo={'produto'}/>
+            <TabelaListagem camposTabela={CamposListagemProd} dadosTabela={produtos} nomeCampoId={'id'} modulo={'produto'}/>
 
         </div>
       </div>

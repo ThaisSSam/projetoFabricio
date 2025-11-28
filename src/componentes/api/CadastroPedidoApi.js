@@ -2,42 +2,43 @@ import React, { useEffect, useState } from 'react';
 import Api from '../../Api';
 
 function CadastroPedidoApi({ dadosPedido }) {
-  const [pedido, setPedido] = useState(dadosPedido);
+  const [pedido, setPedido] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (dadosPedido && Object.keys(dadosPedido).length > 0) {
+    if (!dadosPedido || Object.keys(dadosPedido).length === 0) return;
+
+    const doCreate = async () => {
       setLoading(true);
-      Api
-        .post("/pedido/salvar", JSON.stringify(dadosPedido), {
-          headers: {
-            'Content-Type': 'application/json', // Definindo o Content-Type
-          }
-        })
-        .then((response) => {
-          console.log("Pedido recebido da API:", response.data); // Verificando os dados
-          setPedido(response.data);
-        })
-        .catch((err) => {
-          console.error("Erro ao cadastrar pedido." + err);
-          setError("Ocorreu um erro ao cadastrar o pedido. Tente novamente mais tarde.");
-        })
-        .finally(() => setLoading(false));
-    }
+      setError(null);
+      try {
+        await Api.get('/sanctum/csrf-cookie');
+        const response = await Api.post('/api/sales', dadosPedido);
+        setPedido(response.data);
+      } catch (err) {
+        console.error('Erro ao cadastrar pedido:', err);
+        setError('Ocorreu um erro ao cadastrar o pedido. Tente novamente.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    doCreate();
   }, [dadosPedido]);
 
-  if (error) {
-    return <div className='erro-cadastro-ped'>{error}</div>;
-  }
-
+  if (loading) return <div className='loading-cadastro-sale'>Cadastrando...</div>;
+  if (error) return <div className='erro-cadastro-sale'>{error}</div>;
   if (pedido && Object.keys(pedido).length > 0) {
+    const message = pedido.message || pedido.nome || 'Pedido cadastrado com sucesso!';
     return (
       <div className='pedido-cadastrado'>
-        <h3>Pedido <strong>{pedido.nome}</strong> cadastrado com sucesso!</h3>
+        <h3>{message}</h3>
       </div>
     );
   }
+
+  return null;
 }
 
 

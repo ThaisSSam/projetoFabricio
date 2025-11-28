@@ -6,7 +6,6 @@ import TabelaListagem from '../elementos-gerais/tabela-listagem/TabelaListagem'
 import CamposListagemCliente from './CamposListagemCliente'
 import ListagemClientesApi from '../../../api/ListagemClientesApi';
 import './listagem-cliente.css';
-import DadosTesteListCliente from './DadosTesteListCliente.js';
 
 const ListagemCliente = () => {
   const [botaoClicado, setBotaoClicado ] = useState(true);
@@ -15,7 +14,7 @@ const ListagemCliente = () => {
       setBotaoClicado(!botaoClicado);
   }
 
-  const clientes = ListagemClientesApi();
+  const { clientes, loading, error } = ListagemClientesApi();
 
   return (
     <div className='fundo-listagem-cli'>
@@ -31,7 +30,7 @@ const ListagemCliente = () => {
             caminhoModulo={'/clientes'}
             />
 
-            <TabelaListagem camposTabela={CamposListagemCliente} dadosTabela={DadosTesteListCliente} nomeCampoId={'codigo'} modulo={'cliente'}/>
+            <TabelaListagem camposTabela={CamposListagemCliente} dadosTabela={clientes} nomeCampoId={'id'} modulo={'cliente'}/>
 
         </div>
       </div>

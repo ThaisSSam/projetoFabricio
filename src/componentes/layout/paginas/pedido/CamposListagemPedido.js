@@ -2,20 +2,35 @@ import React from 'react'
 
 const CamposListagemPedido = [
     {
-        nome:'Nome do cliente',
-        nomeAtributo: 'cliente'
+        nome:'Código',
+        nomeAtributo: 'id'
     },
     {
-        nome:'Nome do funcionário',
-        nomeAtributo: 'funcionario'
+        nome:'Código do cliente',
+        nomeAtributo: 'customer_id'
+    },
+    {
+        nome:'Código do funcionário',
+        nomeAtributo: 'created_by'
     },
     {
         nome:'Total do pedido',
-        nomeAtributo: 'total'
+        nomeAtributo: 'total_amount'
     },
     {
-        nome:'Data do pedido',
-        nomeAtributo: 'pedido'
+        nome:'Status',
+        nomeAtributo: 'status',
+        format: 'enum',
+        enum: {
+            "pending": "Pendente",
+            "completed": "Concluído",
+            "canceled": "Cancelado"
+        }
+    },
+    {
+        nome:'Data de criação',
+        nomeAtributo: 'created_at',
+        format: 'data'
     },
     {
         nome:'Excluir',

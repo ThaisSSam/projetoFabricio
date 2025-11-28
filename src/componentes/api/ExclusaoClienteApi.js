@@ -8,8 +8,8 @@ function ExclusaoClienteApi() {
   const excluir = (idCliente) => {
     setLoading(true);
     setError(null);
-
-    Api.delete(`/cliente/excluir/${idCliente}`)
+    Api.get('/sanctum/csrf-cookie');
+    Api.delete(`/api/customers/${idCliente}`)
       .then(() => {
         setLoading(false);
         window.location.href = '/clientes' ;

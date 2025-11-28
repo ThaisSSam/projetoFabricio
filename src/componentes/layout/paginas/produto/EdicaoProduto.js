@@ -5,7 +5,7 @@ import Topo from '../elementos-gerais/topo-edicao/Topo';
 import '../produto/edicao-produto.css';
 import DadosEdicao from '../elementos-gerais/dados-edicao/DadosEdicao';
 import CamposEdicaoProduto from './CamposEdicaoProduto';
-import DadosTesteEdicaoProd from './DadosTesteEdicaoProd';
+import useDetalheProduto from '../../../api/DetalheProdutoApi';
 
 const EdicaoProduto = () => {
   const [botaoClicado, setBotaoClicado ] = useState(true);
@@ -13,6 +13,7 @@ const EdicaoProduto = () => {
   const clicarBotao = () => {
       setBotaoClicado(!botaoClicado);
   }
+  const { produto, loading, error } = useDetalheProduto();
   return (
     <Fragment>
           <div className='fundo-edicao-prod'>
@@ -24,7 +25,7 @@ const EdicaoProduto = () => {
                 <Topo nomeObjetoModulo={'Produto'} descricaoModulo={'Visualize e edite os dados do produto'}/>
 
                 <div className='dados-prod'>
-                  <DadosEdicao camposEdicao={CamposEdicaoProduto} dadosObjeto={DadosTesteEdicaoProd} modulo= 'produtos'/>
+                  <DadosEdicao camposEdicao={CamposEdicaoProduto} dadosObjeto={produto} modulo='produto'/>
                 </div>
 
               </div>

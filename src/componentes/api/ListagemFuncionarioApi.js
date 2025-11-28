@@ -7,26 +7,22 @@ const ListagemFuncionariosApi = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    Api.get("/cliente/listar")
-      .then((response) => {
-        setFuncionarios(response.data)
-      })
-      .catch((err) => {
-        console.error("Nenhum cliente encontrado." + err);
-        setError("Ocorreu um erro ao buscar os funcionarios. Tente novamente mais tarde.");
-      })
-      .finally(() => setLoading(false));
+    const fetchFuncionarios = async () => {
+      try {
+        const response = await Api.get('/api/users');
+        setFuncionarios(response.data || []);
+      } catch (err) {
+        console.error('Nenhum fornecedor encontrado.', err);
+        setError('Ocorreu um erro ao buscar os funcionarios. Tente novamente mais tarde.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFuncionarios();
   }, []);
 
-  if (loading) {
-    return []
-  }
-
-  if (error) {
-    return []
-  }
-
-  return funcionarios;
+  return { funcionarios, loading, error };
 };
 
 export default ListagemFuncionariosApi;

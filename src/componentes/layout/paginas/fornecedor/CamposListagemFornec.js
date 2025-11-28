@@ -2,12 +2,12 @@ import React from 'react'
 
 const CamposListagemFornecedor = [
     {
-        nome:'Nome',
-        nomeAtributo: 'nome'
+        nome:'Código',
+        nomeAtributo: 'id'
     },
     {
         nome:'Telefone',
-        nomeAtributo: 'telefone'
+        nomeAtributo: 'phone'
     },
     {
         nome:'E-mail',
@@ -15,7 +15,11 @@ const CamposListagemFornecedor = [
     },
     {
         nome:'Endereço',
-        nomeAtributo: 'endereco'
+        nomeAtributo: 'address'
+    },
+    {
+        nome: "Tempo de Entrega (dias)",
+        nomeAtributo: 'lead_time'
     },
     {
         nome:'Excluir',

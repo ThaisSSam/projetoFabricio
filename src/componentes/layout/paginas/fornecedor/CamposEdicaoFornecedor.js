@@ -4,12 +4,12 @@ const CamposEdicaoFornecedor = [
     {
         nome:'Nome',
         classe: 'fornec-nome',
-        nomeAtributo: 'nome'
+        nomeAtributo: 'name'
     },
     {
         nome:'Telefone',
         classe: 'fornec-telefone',
-        nomeAtributo: 'telefone'
+        nomeAtributo: 'phone'
     },
     {
         nome:'E-mail',
@@ -19,8 +19,13 @@ const CamposEdicaoFornecedor = [
     {
         nome:'Endereço',
         classe: 'fornec-endereco',    
-        nomeAtributo: 'endereco'
+        nomeAtributo: 'address'
     },
+    {
+        nome: "Tempo de Entrega (dias)",
+        classe: 'fornec-tempo-entrega',
+        nomeAtributo: 'lead_time'
+    }
 ]
 
 export default CamposEdicaoFornecedor

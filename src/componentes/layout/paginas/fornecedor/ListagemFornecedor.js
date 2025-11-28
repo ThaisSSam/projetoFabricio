@@ -5,8 +5,7 @@ import './listagem-fornecedor.css'
 import Topo from '../elementos-gerais/topo-listagem/Topo.js';
 import CamposListagemFornec from './CamposListagemFornec.js';
 import TabelaListagem from '../elementos-gerais/tabela-listagem/TabelaListagem.js';
-import DadosTesteListFornec from './DadosTesteListFornec.js';
-
+import useListagemFornecedores from '../../../api/ListagemFornecedorApi.js';
 
 const ListagemFornecedor = () => {
     const [botaoClicado, setBotaoClicado ] = useState(true);
@@ -14,6 +13,7 @@ const ListagemFornecedor = () => {
     const clicarBotao = () => {
         setBotaoClicado(!botaoClicado);
     }
+    const { fornecedores, loading, error } = useListagemFornecedores();
   return (
     <div className='fundo-listagem-fornec'>
       <Header clicarBotao={clicarBotao}/>
@@ -28,7 +28,7 @@ const ListagemFornecedor = () => {
              caminhoModulo={'/fornecedores'}
              />
 
-            <TabelaListagem camposTabela={CamposListagemFornec} dadosTabela={DadosTesteListFornec} nomeCampoId={'idFornecedor'} modulo={'fornecedor'}/>
+            <TabelaListagem camposTabela={CamposListagemFornec} dadosTabela={fornecedores} nomeCampoId={'id'} modulo={'fornecedor'}/>
 
         </div>
       </div>
